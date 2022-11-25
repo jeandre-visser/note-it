@@ -11,7 +11,7 @@ function App() {
         <Route path="/edit" element={<h1>Edit note</h1>} />
       </Route>
       <Route />
-
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }
