@@ -1,4 +1,5 @@
 import CreatableReactSelect from "react-select/creatable";
+import { Link } from "react-router-dom";
 
 const NoteForm = () => {
   return (
@@ -27,9 +28,11 @@ const NoteForm = () => {
         <button className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-3 px-5 rounded-xl">
           Save
         </button>
-        <button className="bg-gray-500 hover:bg-gray-700 text-white text-lg font-bold py-3 px-5 rounded-xl">
-          Cancel
-        </button>
+        <Link to=".." >
+          <button className="bg-gray-500 hover:bg-gray-700 text-white text-lg font-bold py-3 px-5 rounded-xl">
+            Cancel
+          </button>
+        </Link>
       </div>
     </form>
   )
