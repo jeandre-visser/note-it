@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import NewNote from "./components/NewNote";
 
 function App() {
 
   return (
-    <div className="flex container m-8 h-screen" >
+    <div className="container m-8 h-screen" >
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/new" element={<h1>New note</h1>} />
+        <Route path="/new" element={<NewNote />} />
         <Route path="/:id" >
           <Route index element={<h1>Show note</h1>} />
           <Route path="edit" element={<h1>Edit note</h1>} />
