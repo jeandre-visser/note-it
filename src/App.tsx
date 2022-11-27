@@ -1,10 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import NewNote from "./components/NewNote";
+import Navbar from './components/Navbar';
 
 function App() {
 
   return (
-    <div className="container m-8 h-screen" >
+    <div className="px-10 py-8" >
+      <Navbar />
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/new" element={<NewNote />} />
