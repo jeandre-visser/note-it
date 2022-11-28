@@ -2,17 +2,17 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import NewNote from "./components/NewNote";
 import Navbar from './components/Navbar';
 
-type Note = {
+export type Note = {
   id: string
 } & NoteData
 
-type NoteData = {
+export type NoteData = {
   title: string
   markdown: string
   tags: Tag[]
 }
 
-type Tag = {
+export type Tag = {
   id: string
   label: string
 }
