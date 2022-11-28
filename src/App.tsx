@@ -50,12 +50,16 @@ function App() {
     })
  }
 
+ const addTag = (tag: Tag) => {
+  setTags(prev => [...prev, tag])
+ }
+
   return (
     <div className="px-10 py-8" >
       <Navbar />
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/new" element={<NewNote onSubmit={createNote} />} />
+        <Route path="/new" element={<NewNote onSubmit={createNote} onAddTag={addTag} availableTags={tags} />} />
         <Route path="/:id" >
           <Route index element={<h1>Show note</h1>} />
           <Route path="edit" element={<h1>Edit note</h1>} />

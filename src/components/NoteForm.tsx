@@ -2,6 +2,7 @@ import CreatableReactSelect from "react-select/creatable";
 import { Link } from "react-router-dom";
 import { FormEvent, useRef, useState } from "react";
 import { NoteData, Tag } from "../App";
+import { v4 as uuidV4 } from "uuid";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void
@@ -36,6 +37,11 @@ const NoteForm = ({ onSubmit }: NoteFormProps ) => {
             Tags
           </label>
           <CreatableReactSelect 
+            onCreateOption={label => {
+              const newTag = { id: uuid.v4(), label }
+              onAddTag(newTag)
+              setSelectTags(prev => [...prev, newTag])
+            }}
             isMulti 
             className=" text-lg text-gray-700" 
             value={selectTags.map(tag => {
