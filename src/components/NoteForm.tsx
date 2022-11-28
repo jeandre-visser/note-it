@@ -6,9 +6,11 @@ import { v4 as uuidV4 } from "uuid";
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void
+  onAddTag: (tag: Tag) => void
+  availableTags: Tag[]
 }
 
-const NoteForm = ({ onSubmit }: NoteFormProps ) => {
+const NoteForm = ({ onSubmit, onAddTag, availableTags }: NoteFormProps ) => {
   const titleRef = useRef<HTMLInputElement>(null)
   const markdownRef = useRef<HTMLTextAreaElement>(null)
   const [selectTags, setSelectTags] = useState<Tag[]>([])
@@ -38,7 +40,7 @@ const NoteForm = ({ onSubmit }: NoteFormProps ) => {
           </label>
           <CreatableReactSelect 
             onCreateOption={label => {
-              const newTag = { id: uuid.v4(), label }
+              const newTag = { id: uuidV4(), label }
               onAddTag(newTag)
               setSelectTags(prev => [...prev, newTag])
             }}
@@ -52,6 +54,9 @@ const NoteForm = ({ onSubmit }: NoteFormProps ) => {
                 return { label: tag.label, id: tag.value}
               }))
             }}
+            options={availableTags.map(tag => {
+              return { label: tag.label, value: tag.id}
+            })}
           />
         </div>
       </div>
