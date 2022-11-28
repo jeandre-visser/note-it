@@ -3,6 +3,7 @@ import NewNote from "./components/NewNote";
 import Navbar from './components/Navbar';
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useMemo } from "react";
+import { v4 as uuidV4 } from "uuid";
 
 export type Note = {
   id: string
@@ -40,6 +41,14 @@ function App() {
       return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id))}
     })
   }, [notes, tags])
+
+ const createNote = ({ tags, ...data}: NoteData) => {
+    setNotes(prevNotes => {
+      return [...prevNotes, 
+        { ...data, id: uuidV4(), tagIds: tags.map(tag => tag.id)}
+      ]
+    })
+ }
 
   return (
     <div className="px-10 py-8" >
