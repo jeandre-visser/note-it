@@ -28,7 +28,7 @@ const NoteForm = ({ onSubmit }: NoteFormProps ) => {
           <label className="block text-white text-xl font-bold mb-2" >
             Title
           </label>
-          <input className="w-full appearance-none text-lg rounded py-2 px-3 text-gray-700 leading-tight focus:outline-offset-2 outline-blue-500" id="title" type="text" ref={titleRef} />
+          <input required className="w-full appearance-none text-lg rounded py-2 px-3 text-gray-700 leading-tight focus:outline-offset-2 outline-blue-500" id="title" type="text" ref={titleRef} />
         </div>
         <div className="w-full sm:w-1/2">
           <label className="block text-white text-xl font-bold mb-2" >
@@ -41,7 +41,7 @@ const NoteForm = ({ onSubmit }: NoteFormProps ) => {
         <label className="block text-white text-xl font-bold mb-2" >
           Body
         </label>
-        <textarea className="mb-4 text-lg rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-offset-2 outline-blue-500" id="markdown" rows={12} ref={markdownRef} />
+        <textarea required className="mb-4 text-lg rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-offset-2 outline-blue-500" id="markdown" rows={12} ref={markdownRef} />
       </div>
       <div className="flex gap-4 justify-end">
         <button className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-3 px-5 rounded-xl">
