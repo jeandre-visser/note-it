@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { FormEvent, useRef } from "react";
 
 type NoteData = {
+  title: string
+  markdown: string
+  tags: Tag[]
+}
 
+type Tag = {
+  id: string
+  label: string
 }
 
 const NoteForm = () => {
