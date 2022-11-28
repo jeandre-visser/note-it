@@ -1,7 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import NewNote from "./components/NewNote";
 import Navbar from './components/Navbar';
-import { useLocalStorage } from "react";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useMemo } from "react";
 
 export type Note = {
   id: string
@@ -32,8 +33,13 @@ export type Tag = {
 function App() {
 
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
-
   const [tags, setTags] = useLocalStorage<RawNote[]>("TAGS", [])
+
+  const notesWithTags = useMemo(() => {
+    return notes.map(note => {
+      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id))}
+    })
+  }, [notes, tags])
 
   return (
     <div className="px-10 py-8" >
