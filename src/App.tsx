@@ -2,6 +2,22 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import NewNote from "./components/NewNote";
 import Navbar from './components/Navbar';
 
+type Note = {
+  id: string
+} & NoteData
+
+type NoteData = {
+  title: string
+  markdown: string
+  tags: Tag[]
+}
+
+type Tag = {
+  id: string
+  label: string
+}
+
+
 function App() {
 
   return (
