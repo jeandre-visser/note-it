@@ -1,10 +1,15 @@
 import NoteForm from './NoteForm';
+import { NoteData } from '../App';
 
-const NewNote = () => {
+type NewNoteProps = {
+  onSubmit: (data: NoteData) => void
+}
+
+const NewNote = ({ onSubmit }: NewNoteProps) => {
   return (
     <>
-      <div className="mb-5 text-3xl">New Note</div>
-      <NoteForm />
+      <div className="mb-5 text-3xl font-bold">New Note</div>
+      <NoteForm onSubmit={onSubmit} />
     </>
   )
 }
