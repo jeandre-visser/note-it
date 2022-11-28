@@ -1,24 +1,24 @@
 import CreatableReactSelect from "react-select/creatable";
 import { Link } from "react-router-dom";
 import { FormEvent, useRef } from "react";
+import { NoteData } from "../App";
 
-type NoteData = {
-  title: string
-  markdown: string
-  tags: Tag[]
+type NoteFormProps = {
+  onSubmit: (data: NoteData) => void
 }
 
-type Tag = {
-  id: string
-  label: string
-}
-
-const NoteForm = () => {
+const NoteForm = ({ onSubmit }: NoteFormProps ) => {
   const titleRef = useRef<HTMLInputElement>(null)
   const markdownRef = useRef<HTMLTextAreaElement>(null)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    onSubmit({
+      title: titleRef.current!.value,
+      markdown: markdownRef.current!.value,
+      tags: []
+    })
   }
 
   return (
