@@ -55,7 +55,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/new" element={<NewNote />} />
+        <Route path="/new" element={<NewNote onSubmit={createNote} />} />
         <Route path="/:id" >
           <Route index element={<h1>Show note</h1>} />
           <Route path="edit" element={<h1>Edit note</h1>} />
